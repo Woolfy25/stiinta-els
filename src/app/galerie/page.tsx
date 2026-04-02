@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 
 import Image from "next/image";
 
-export default function Contact() {
+export default function Galerie() {
   return (
     <>
       <Header></Header>

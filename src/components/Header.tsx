@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+type Props = {
+  onOpenModal: () => void;
+};
+
+export default function Header({ onOpenModal }: Props) {
   const pathname = usePathname();
 
   return (
@@ -71,7 +75,10 @@ export default function Header() {
           >
             Contact
           </Link>
-          <button className="bg-primary text-on-primary px-6 py-2 font-label text-[0.75rem] font-bold tracking-[0.1rem] rounded-md uppercase hover:opacity-80 transition-opacity">
+          <button
+            onClick={onOpenModal}
+            className="bg-primary text-on-primary px-6 py-2 font-label text-[0.75rem] font-bold tracking-[0.1rem] rounded-md uppercase hover:opacity-80 transition-opacity"
+          >
             ÎNSCRIE-TE
           </button>
         </nav>

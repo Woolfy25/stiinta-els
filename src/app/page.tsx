@@ -1,12 +1,19 @@
+"use client";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+import { useState } from "react";
+import RegistrationModal from "../components/Inscriere";
 
 import Image from "next/image";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <Header></Header>
+      <Header onOpenModal={() => setIsOpen(true)}></Header>
       <main className="pt-16">
         {/* Hero Section */}
         <section className="relative h-[751px] flex items-center overflow-hidden bg-zinc-950">
@@ -249,6 +256,7 @@ export default function Home() {
       </main>
       {/* Footer */}
       <Footer></Footer>
+      <RegistrationModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 }
