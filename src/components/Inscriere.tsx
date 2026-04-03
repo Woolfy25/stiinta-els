@@ -1,11 +1,13 @@
 "use client";
 
-type Props = {
-  isOpen: boolean;
-  onClose: () => void;
-};
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { closeModal } from "../store/slices/modalSlice";
 
-export default function RegistrationModal({ isOpen, onClose }: Props) {
+export default function RegistrationModal() {
+  const isOpen = useSelector((state: RootState) => state.modal.isOpen);
+  const dispatch = useDispatch();
+
   if (!isOpen) return null;
 
   return (
@@ -13,7 +15,9 @@ export default function RegistrationModal({ isOpen, onClose }: Props) {
       className="modal-backdrop flex items-center justify-center p-4"
       id="registrationModal"
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (e.target === e.currentTarget) {
+          dispatch(closeModal());
+        }
       }}
     >
       <div className="bg-white rounded-lg shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-300">
@@ -23,7 +27,7 @@ export default function RegistrationModal({ isOpen, onClose }: Props) {
           </h2>
           <button
             className="hover:scale-110 transition-transform"
-            onClick={onClose}
+            onClick={() => dispatch(closeModal())}
           >
             <span className="material-symbols-outlined">close</span>
           </button>
@@ -33,7 +37,7 @@ export default function RegistrationModal({ isOpen, onClose }: Props) {
           onSubmit={(e) => {
             e.preventDefault();
             alert("Înscriere trimisă cu succes!");
-            onClose();
+            dispatch(closeModal());
           }}
         >
           <div className="space-y-1">
@@ -72,7 +76,7 @@ export default function RegistrationModal({ isOpen, onClose }: Props) {
           <div className="flex gap-4 pt-4">
             <button
               className="flex-1 px-6 py-4 border-2 border-zinc-200 text-zinc-600 font-label font-black text-xs tracking-widest uppercase rounded-md hover:bg-zinc-50 transition-colors"
-              onClick={onClose}
+              onClick={() => dispatch(closeModal())}
               type="button"
             >
               Anulează

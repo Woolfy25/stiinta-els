@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Lexend, Manrope } from "next/font/google";
+import ReduxProvider from "../store/Provider";
+import RegistrationModal from "../components/Inscriere";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -33,7 +35,11 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
-        {children}
+        <ReduxProvider>
+          {children}
+          <RegistrationModal />
+        </ReduxProvider>
+        <></>
       </body>
     </html>
   );

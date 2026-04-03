@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 
+import { useDispatch } from "react-redux";
+import { openModal } from "../store/slices/modalSlice";
+
 export default function Header() {
+  const dispatch = useDispatch();
+
   return (
     <footer className="bg-zinc-950 w-full relative overflow-hidden pt-20 pb-10">
       <div className="flex flex-col md:flex-row justify-between items-start px-12 max-w-7xl mx-auto gap-12 relative z-10">
@@ -77,7 +82,10 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <button className="text-zinc-500 hover:text-primary transition-colors font-label text-sm uppercase font-bold">
+                <button
+                  onClick={() => dispatch(openModal())}
+                  className="text-zinc-500 hover:text-primary transition-colors font-label text-sm uppercase font-bold"
+                >
                   Înscrie-te
                 </button>
               </li>

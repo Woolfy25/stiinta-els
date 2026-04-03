@@ -2,6 +2,9 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 import Image from "next/image";
+import Link from "next/link";
+
+import ContactForm from "../../components/ContactForm";
 
 export default function Contact() {
   return (
@@ -26,7 +29,7 @@ export default function Contact() {
             </div>
             <div className="hidden md:block w-1/3 opacity-10 select-none">
               <span className="font-headline text-[12rem] font-black leading-none uppercase pointer-events-none">
-                O-MAP
+                E-MAP
               </span>
             </div>
           </div>
@@ -43,7 +46,8 @@ export default function Contact() {
                 explore
               </span>
             </div>
-            <form className="space-y-8 relative z-10">
+            <ContactForm></ContactForm>
+            {/* <form className="space-y-8 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label
@@ -109,12 +113,12 @@ export default function Contact() {
               >
                 Trimite Mesaj
               </button>
-            </form>
+            </form> */}
           </div>
           {/* Details Sidebar */}
           <div className="lg:col-span-5 space-y-8">
             {/* Info Cards */}
-            <div className="bg-surface-container-low p-8 space-y-8">
+            <div className="bg-surface-container-low p-6 space-y-8">
               <div className="flex items-start gap-4">
                 <div className="bg-primary-container/20 p-3 rounded-xl">
                   <span
@@ -129,7 +133,7 @@ export default function Contact() {
                     Scrie-ne
                   </span>
                   <p className="font-headline font-bold text-lg text-on-surface">
-                    contact@stiintaelectrosistem.ro
+                    contact@electro-sistem.com
                   </p>
                 </div>
               </div>
@@ -183,7 +187,11 @@ export default function Contact() {
                 data-alt="abstract architectural map lines of a city with topographic contours and orange orienteering markers on white paper"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqex8MHsMo-7q1CpQo_tv2FaF5LNXaQuGo5q0Rt1Og6fZYafMHCOCog-Qdf4D6rUZxJAZyh3uHry08M_AFjd2JG41qMDRz-1Q2PlReuDa5EyRgpmttSFwJlN9YZS6irO2QYh-7I25qriUP7K68nZ_hnXE4ZT3zp_XZKfdX7IanonRDhZs57VK0rgD3nfz2wa7RxYLN_GzlydHBT4tyQpZIm0Y0gp8H_WMDQcwdYDXf0kiZj8D_v5QIxeGULKYtVovtp4e2ZIzVthM"
               />
-              <div className="absolute inset-0 flex items-center justify-center">
+              <Link
+                href="https://maps.app.goo.gl/cdes3XYnocN2ZE64A"
+                target="_blank"
+                className="absolute inset-0 flex items-center justify-center"
+              >
                 <div className="bg-white/90 backdrop-blur-sm p-4 shadow-xl flex items-center gap-3">
                   <span
                     className="material-symbols-outlined text-primary"
@@ -195,7 +203,7 @@ export default function Contact() {
                     Vezi pe Hartă
                   </span>
                 </div>
-              </div>
+              </Link>
               {/* Decorative topographical lines effect */}
               <div className="absolute inset-0 pointer-events-none border-[20px] border-white/10" />
             </div>
@@ -207,13 +215,15 @@ export default function Contact() {
               <div className="flex gap-6">
                 <a
                   className="hover:text-primary-container transition-colors font-headline font-black italic"
-                  href="#"
+                  href="https://www.facebook.com/csstiintaelectrosistembaiamare"
+                  target="_blank"
                 >
                   FB
                 </a>
                 <a
                   className="hover:text-primary-container transition-colors font-headline font-black italic"
-                  href="#"
+                  href="https://www.instagram.com"
+                  target="_blank"
                 >
                   INSTA
                 </a>
@@ -225,12 +235,12 @@ export default function Contact() {
         <section className="mt-20 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
           <div className="w-full md:w-1/2">
             <Image
-              width={1000}
-              height={1000}
+              width={1024}
+              height={1024}
               alt="Compass in Action"
               className="w-full h-80 object-cover shadow-2xl"
               data-alt="close up of a compass being held by a hand in the forest with soft green moss and dappled sunlight"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQSKgpOBA6Y3E24looKFf3LYNBrXOhZAbh0YY9XUvDiR1hykFKP5uZYyYJfD3_1JbCs9r5NUNIQqJm47nhNTwJpxT-hRmoN6dsujcbYM8uHq9aprFErYEvblQACrtEteAchIwd7_FE74pDvawwxReKSgBGG8q-cRmGdGgXmQivESKcAapluh_fTeZ1Fwx35IJdW2JDfEh-YZWxeuKLJxPHsHdTGFYmBOEYXdzc8zR2fdt0prcUu0ISBOWcBpDQfCW5IZ9gQ-NbVLk"
+              src="/harta-compas-2.png"
             />
           </div>
           <div className="w-full md:w-1/2 space-y-6">
@@ -244,9 +254,9 @@ export default function Contact() {
               ghidăm prin păduri și pe podiumuri.
             </p>
             <div className="pt-4">
-              <a
+              <Link
                 className="text-primary font-bold font-label uppercase text-xs tracking-widest border-b-2 border-primary/20 hover:border-primary transition-all pb-1 inline-flex items-center gap-2"
-                href="#"
+                href="/blog"
               >
                 Întrebări frecvente{" "}
                 <span
@@ -255,7 +265,7 @@ export default function Contact() {
                 >
                   arrow_forward
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

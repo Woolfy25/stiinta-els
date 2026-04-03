@@ -3,19 +3,19 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import { useState } from "react";
-import RegistrationModal from "../components/Inscriere";
-
 import Image from "next/image";
+import Link from "next/link";
+
+import { useDispatch } from "react-redux";
+import { openModal } from "../store/slices/modalSlice";
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <>
-      <Header onOpenModal={() => setIsOpen(true)}></Header>
+      <Header></Header>
       <main className="pt-16">
-        {/* Hero Section */}
         <section className="relative h-[751px] flex items-center overflow-hidden bg-zinc-950">
           <div className="absolute inset-0 opacity-60">
             <Image
@@ -23,7 +23,7 @@ export default function Home() {
               className="w-full h-full object-cover"
               fill
               data-alt="dynamic low-angle shot of a trail runner navigating through a misty pine forest with a compass in hand, sunlight filtering through trees"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEtdROOgV-n6BG6feB8eSfW0-IloZTxxyTDfF41iXXYELGXVxFA2p2EnJHrIPFiox334wYbkjHYUjtQCufUf8c0GmZ5p2sqC5O-Uhm98AdSwM_-0gfiQTW0MJFT22IzffESzdwxCgsCJDcMcAwAUBkwLZOxtCG4p1uCdM1DclZhiTyrghrHCiVvwMIpG-sh_bugqbZW7bbCsndqBWr5Ifew2LqDy5t49lX48xIdwFcno098uWxACBrGGOxtiwaU3dxs50KLPIvkv8"
+              src="/concurs-orientare.png"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/40 to-transparent" />
@@ -42,12 +42,18 @@ export default function Home() {
                 orientare.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="kinetic-gradient text-on-primary px-10 py-4 font-label text-[0.8rem] font-bold tracking-[0.1rem] rounded-md uppercase hover:scale-105 transition-transform">
+                <button
+                  onClick={() => dispatch(openModal())}
+                  className="kinetic-gradient text-on-primary px-10 py-4 font-label text-[0.8rem] font-bold tracking-[0.1rem] rounded-md uppercase hover:scale-105 transition-transform"
+                >
                   Începe Călătoria
                 </button>
-                <button className="border border-white/20 backdrop-blur-md text-white px-10 py-4 font-label text-[0.8rem] font-bold tracking-[0.1rem] rounded-md uppercase hover:bg-white/10 transition-colors">
+                <Link
+                  href="/evenimente"
+                  className="border border-white/20 backdrop-blur-md text-white px-10 py-4 font-label text-[0.8rem] font-bold tracking-[0.1rem] rounded-md uppercase hover:bg-white/10 transition-colors"
+                >
                   Vezi Evenimente
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -69,7 +75,7 @@ export default function Home() {
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                     fill
                     data-alt="top-down artistic close-up of a detailed topographic orienteering map with colorful course markings and a classic compass"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuASwVTmmZSw6z6hLN8aAuiT7jSTZ29b8EBnu26AELS3aIT1XzS7HdS2zvMdoHMbEqRHpcbRAwJb-9UFS_USlg7ebfALqApBN7ZfhkBMaNUbGxFQQqxMGr71lcAvy3S_zU8cJ4N10k2H20q87jqk0ygOGLvcSDPNzT46pMlqB0XWxv4ptzxpgW3xH-NJKmso8zV4Tp5MWywDWIx3hI6d_mF2fwbtYiRBzzRbWHpKQPy3udJ3q91-Y5gDaz_lU1yLx30XJ1hlJAPam7E"
+                    src="/harta-compas.png"
                   />
                 </div>
                 <div className="absolute -top-10 -left-10 w-40 h-40 kinetic-gradient opacity-20 blur-3xl rounded-full" />
@@ -240,12 +246,18 @@ export default function Home() {
                 unui nou mod de a explora natura, drumul începe aici.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <button className="kinetic-gradient text-on-primary px-12 py-5 font-label text-sm font-black tracking-[0.2rem] rounded-md uppercase shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                <button
+                  onClick={() => dispatch(openModal())}
+                  className="kinetic-gradient text-on-primary px-12 py-5 font-label text-sm font-black tracking-[0.2rem] rounded-md uppercase shadow-lg shadow-primary/20 hover:scale-105 transition-transform"
+                >
                   ÎNSCRIE-TE ÎN CLUB ACUM
                 </button>
-                <button className="bg-surface-container text-on-surface px-12 py-5 font-label text-sm font-black tracking-[0.2rem] rounded-md uppercase hover:bg-surface-container-high transition-colors">
+                <Link
+                  href="/contact"
+                  className="bg-surface-container text-on-surface px-12 py-5 font-label text-sm font-black tracking-[0.2rem] rounded-md uppercase hover:bg-surface-container-high transition-colors"
+                >
                   CONTACTEAZĂ-NE
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -254,9 +266,7 @@ export default function Home() {
           <div className="absolute top-1/3 left-0 w-full h-px bg-primary/5 rotate-6" />
         </section>
       </main>
-      {/* Footer */}
       <Footer></Footer>
-      <RegistrationModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 }
